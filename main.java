@@ -4,15 +4,16 @@
 // This class demonstrates the spell checker functionality by loading a dictionary
 // and checking user input for misspelled words. Users can also add new words
 // to the dictionary interactively.
+
 import java.util.*;
 
 public class Main {
     
     public static void main(String[] args) {
-        System.out.println("=== Spell Checker Demo ===\n");
+        System.out.println("=== Spell Checker Demo ==\n");
         
         // Create dictionary and spell checker
-        Dictionary<String> dict = new BST<String>();
+        Dictionary<String> dict = new BST<>();
         SpellChecker checker = new SpellChecker(dict, "dictionary.txt");
         
         System.out.println("Dictionary loaded with " + dict.size() + " words.\n");

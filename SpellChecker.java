@@ -69,7 +69,7 @@ public class SpellChecker {
         List<String> incorrectWords = new ArrayList<>();
         String cleanText = text.toLowerCase();
         String[] words = cleanText.split("\\s+");           // splits on whitespace
-        for(int i = 0; i < words.length; i++) {
+        for (int i = 0; i < words.length; i++) {
             String word = words[i].replaceAll("[^a-z]", "");
             if (!word.isEmpty() && !dictionary.contains(word)) {
                 incorrectWords.add(word);
