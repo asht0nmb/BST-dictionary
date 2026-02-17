@@ -2,3 +2,6 @@
 # practice files
 practice.java
 *.txt
+
+# running files
+*.class
