@@ -1,10 +1,10 @@
-public class BST<E extends Comparable<E>> {
-    private TreeNode<E> root;
+public class BST<E extends Comparable<E>> implements Dictionary<E> {
+    private TreeNode root;
 
-    private class TreeNode<E> {
+    private class TreeNode {
         private E value;
-        private TreeNode<E> left;
-        private TreeNode<E> right;
+        private TreeNode left;
+        private TreeNode right;
 
         @Override
         public String toString() {
@@ -24,14 +24,14 @@ public class BST<E extends Comparable<E>> {
     }
 
     // public insert method
-    public void insert (E value) {
+    public void insert(E value) {
         root = insertHelper(root, value);
     }
 
     // private insert helper
-    private TreeNode<E> insertHelper (TreeNode<E> node, E value) {
+    private TreeNode insertHelper(TreeNode node, E value) {
         if (node == null) {
-            return new TreeNode<>(value);
+            return new TreeNode(value);
         }
         if (value.compareTo(node.value) > 0) {
             node.right = insertHelper(node.right, value);
@@ -44,12 +44,12 @@ public class BST<E extends Comparable<E>> {
     }
 
     // public search method
-    public boolean contains (E value) {
+    public boolean contains(E value) {
         return containsHelper(root, value);
     }
 
     // private search helper
-    private boolean containsHelper(TreeNode<E> node, E value) {
+    private boolean containsHelper(TreeNode node, E value) {
         if (node == null) {
             return false;
         }
@@ -64,17 +64,35 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    // public print
     public void printInOrder() {
         printHelper(root);
     }
 
-    private void printHelper(TreeNode<E> node) {
-        // String[] valueArray = {}; 
+    //private print helper
+    private void printHelper(TreeNode node) {
         if (node == null) {
             return;
         }
         printHelper(node.left);
         System.out.println(node.value);
         printHelper(node.right);
+    }
+
+    //public size counter
+    public int size() {
+        return sizeHelper(root);
+    }
+    
+    // private size helper
+    private int sizeHelper(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int leftSize = sizeHelper(node.left);
+        int rightSize = sizeHelper(node.right);
+
+        return leftSize + rightSize + 1;
     }
 }
